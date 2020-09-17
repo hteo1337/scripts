@@ -57,3 +57,16 @@ function Install-7zipNpp ($source = ($env:TEMP + "\SW"))
     }
 }
 Install-7zipNpp
+
+
+$trainingURLs= @("https://docs.uipath.com/orchestrator/v2019/docs/prerequisites-for-installation", "https://docs.uipath.com/orchestrator/v2019/docs/haa-installation","https://docs.uipath.com/orchestrator/v2019/docs/the-windows-installer" )
+
+$wshShell = New-Object -ComObject "WScript.Shell"
+foreach ($url in $trainingURLs) {
+    $urlName = $url.Substring($url.LastIndexOf("/") + 1)
+	$Shortcut = $wshShell.CreateShortcut(
+  (Join-Path $wshShell.SpecialFolders.Item("AllUsersDesktop") "$urlName.url")
+)
+    $Shortcut.TargetPath = $url
+    $Shortcut.Save()
+}
