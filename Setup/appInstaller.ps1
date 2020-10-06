@@ -1,8 +1,8 @@
-
-function Install-7zipNpp ($source = ($env:TEMP + "\SW")) {    
+function Install-Apps ($source = ($env:TEMP + "\SW")) {    
     If (!(Test-Path -Path $source -PathType Container)) { New-Item -Path $source -ItemType Directory | Out-Null }
     
     $packages = @(
+        @{title = 'Chrome'; url = 'http://dl.google.com/edgedl/chrome/install/GoogleChromeStandaloneEnterprise64.msi'; Arguments = ' /qn /norestart'; Destination = $source },
         @{title = '7zip Extractor'; url = 'https://www.7-zip.org/a/7z1900-x64.msi'; Arguments = ' /qn'; Destination = $source },
         @{title = 'Notepad++ 7.8.9'; url = 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.8.9/npp.7.8.9.Installer.exe'; Arguments = ' /Q /S'; Destination = $source }
     )
@@ -31,7 +31,7 @@ function Install-7zipNpp ($source = ($env:TEMP + "\SW")) {
         Invoke-Expression -Command "$destinationPath $Arguments"
     }
 }
-Install-7zipNpp
+Install-Apps
 
 
 $trainingURLs = @("https://docs.uipath.com/orchestrator/v2019/docs/prerequisites-for-installation", "https://docs.uipath.com/orchestrator/v2019/docs/haa-installation", "https://docs.uipath.com/orchestrator/v2019/docs/the-windows-installer" )
