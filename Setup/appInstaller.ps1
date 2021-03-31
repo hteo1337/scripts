@@ -34,7 +34,7 @@ function Install-Apps ($source = ($env:TEMP + "\SW")) {
 Install-Apps
 
 
-$trainingURLs = @("https://docs.uipath.com/orchestrator/v2019/docs/prerequisites-for-installation", "https://docs.uipath.com/orchestrator/v2019/docs/haa-installation", "https://docs.uipath.com/orchestrator/v2019/docs/the-windows-installer" )
+$trainingURLs = @("https://docs.uipath.com/installation-and-upgrade/docs/orchestrator-prerequisites-for-installation", "https://docs.uipath.com/installation-and-upgrade/docs/haa-installation", "https://docs.uipath.com/installation-and-upgrade/docs/orchestrator-prerequisites-for-installation" )
 
 $wshShell = New-Object -ComObject "WScript.Shell"
 foreach ($url in $trainingURLs) {
